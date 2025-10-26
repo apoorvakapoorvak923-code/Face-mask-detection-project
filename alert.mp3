@@ -1,0 +1,9 @@
+import simpleaudio as sa
+import threading
+
+def play_alert_sound():
+    def play():
+        wave_obj = sa.WaveObject.from_wave_file("alert.wav")  # convert your mp3 to wav
+        play_obj = wave_obj.play()
+        play_obj.wait_done()
+    threading.Thread(target=play, daemon=True).start()
